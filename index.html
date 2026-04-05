@@ -1,35 +1,138 @@
-<div class="month-box" onclick="openModal('March')">March</div>
-            <div class="month-box" onclick="openModal('April')">April</div>
-            <div class="month-box" onclick="openModal('May')">May</div>
-            <div class="month-box" onclick="openModal('June')">June</div>
-            <div class="month-box" onclick="openModal('July')">July</div>
-            <div class="month-box" onclick="openModal('August')">August</div>
-            <div class="month-box" onclick="openModal('September')">September</div>
-            <div class="month-box" onclick="openModal('October')">October</div>
-            <div class="month-box" onclick="openModal('November')">November</div>
-            <div class="month-box" onclick="openModal('December')">December</div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet of the Month - For Raghad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* التنسيق البرمجي (CSS) */
+        body {
+            background-image: url('image.png'); /* اسم صورة القطة في المستودع */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            color: #4a4a4a;
+            min-height: 100vh;
+        }
 
-        <div class="comments-wrapper">
-            <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: #ff6b81; margin-bottom: 10px;">Our Sweet Memories</h2>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 25px;">Share a photo of the sweet or leave a beautiful note here!</p>
-            
-            <a href="https://github.com/almoughrabifares-pixel/mylove-sweet/issues/new" target="_blank" class="btn-note">
-               Write a Note / Add Photo ✍️
-            </a>
-        </div>
-    </div>
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            text-align: center;
+            padding: 50px 20px;
+        }
 
-    <div id="sweetModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalMonth" style="color: #ff6b81; font-family: 'Great Vibes'; font-size: 2.5rem;"></h2>
-            <h3 id="sweetName" style="margin-bottom: 10px;"></h3>
-            <img id="sweetImage" src="" alt="Sweet Photo">
-            <p id="sweetDesc" style="color: #666; line-height: 1.6;"></p>
-        </div>
-    </div>
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: #ff6b81;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
 
-    <script src="script.js"></script>
-</body>
-</html>
+        /* شبكة الأشهر (Grid System) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .month-box {
+            background: rgba(255, 255, 255, 0.25); /* تأثير الزجاج */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 40px 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .month-box:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.45);
+            border-color: #ff6b81;
+        }
+
+        /* قسم الرسائل الخاصة */
+        .comments-wrapper {
+            margin-top: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-note {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #ff6b81;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3);
+        }
+
+        /* النافذة المنبثقة (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 30px;
+            width: 85%;
+            max-width: 450px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px; top: 10px;
+            font-size: 30px; cursor: pointer; color: #ff6b81;
+        }
+
+        #sweetImage {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 15px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title">Sweet of the Month</h1>
+        
+        <div class="grid-container" id="monthsGrid">
+            </div>
