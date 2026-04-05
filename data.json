@@ -1,1 +1,12 @@
-
+{
+  "January": {
+    "name": "Strawberry Cheesecake",
+    "desc": "The most delicious start to our journey!",
+    "image": "images/jan.jpg"
+  },
+  "February": {
+    "name": "Chocolate Lava Cake",
+    "desc": "Made with love and extra sugar.",
+    "image": "images/feb.jpg"
+  }
+}
