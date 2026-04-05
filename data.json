@@ -2,16 +2,16 @@
   "January": {
     "name": "custard",
     "desc": "The most delicious start to our journey!",
-    "image": "images/jan.jpg"
+    "image": "jan.jpg"
   },
   "February": {
     "name": "choclate balls",
     "desc": "Made with love and extra sugar.",
-    "image": "images/feb.jpg"
+    "image": "feb.jpg"
    },
   "march": {
     "name": "tira miss u",
     "desc": "Made with your sweetness .",
-    "image": "images/nar.jpg"
+    "image": "mar.jpg"
   }
 }
